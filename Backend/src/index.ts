@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Server } from '@src/server'
+import { Server } from './server'
 
 class Application {
 

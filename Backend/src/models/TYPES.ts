@@ -1,3 +1,6 @@
 export const TYPES = {
-  AccountService: "AccountService"
+  AccountService: "AccountService",
+  AccountRepository: "AccountRepository",
+
+  AccountMock: "AccountMock"
 }

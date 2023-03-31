@@ -1,0 +1,6 @@
+{
+  "cli": {
+  "entitiesDir": "./src/entities/*{.ts,.js}",
+  "migrationsDir": "./src/migrations/*{.ts,js}"
+  }
+}
