@@ -5,6 +5,12 @@ import UnauthorizedError from "@src/utils/unauthorizedError";
 import { Request, Response, NextFunction } from "express";
 import * as jwt from 'jsonwebtoken';
 
+declare module "express-session" {
+  interface Session {
+    user: IUser;
+  }
+}
+
 async function auth(
   req: Request,
   res: Response,
@@ -26,6 +32,8 @@ async function auth(
     }
 
     const decode: IUser = jwt.verify(token, JWT_KEY) as IUser;
+
+    req.session.user = decode
 
     return next();
   } catch(e) {

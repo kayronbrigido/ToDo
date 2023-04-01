@@ -11,8 +11,8 @@ export class TaskEntity extends BaseEntity{
     @Column()
     public description?: string
 
-    @Column()
-    public status?: string
+    @Column({default: 0})
+    public status?: number
 
     @ManyToOne((): ObjectType<AccountEntity> => AccountEntity, (account) => account.id)
     @JoinColumn({name: 'accountId', referencedColumnName: 'id'})

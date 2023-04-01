@@ -22,6 +22,7 @@ import { TaskService } from './services/taskService';
 import { ITaskRepository } from './repositories/interfaces/taskInterface';
 import { TaskRepository } from './repositories/taskRepository';
 import { ITaskService } from './services/interfaces/taskService.interface';
+import * as session from 'express-session';
 
 
 const httpStatus = require('http-status');
@@ -70,6 +71,12 @@ export class Server {
       app.use(compress());
       app.use(cors());
       app.use(helmet());
+      app.use(session({
+        secret: 'express-secret',
+        saveUninitialized: false,
+        resave: false,
+        store: new session.MemoryStore()
+      }))
     });
 
     server.setErrorConfig((app: any): void => {

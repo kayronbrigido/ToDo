@@ -19,16 +19,16 @@ export class TaskService implements ITaskService {
     this.taskRepository = taskRepository;
   }
   
-  async create(task: TaskEntity): Promise<TaskEntity> {
-    return this.taskRepository.create(task);
+  async create(task: TaskEntity, userId: string): Promise<TaskEntity> {
+    return this.taskRepository.create(task, userId);
   }
 
   async delete(id: string): Promise<void> {
     return this.taskRepository.delete(id);
   }
 
-  async update(task: TaskEntity): Promise<TaskEntity> {
-    return this.taskRepository.update(task)
+  async update(task: TaskEntity,  userId: string): Promise<TaskEntity> {
+    return this.taskRepository.update(task, userId)
   }
 
   async getById(id: string): Promise<TaskEntity> {
@@ -40,14 +40,10 @@ export class TaskService implements ITaskService {
     }
 
 
-    this.taskRepository.getById(id);
-
-    return 
+    return this.taskRepository.getById(id);
   }
 
   async getAll(userId: string): Promise<TaskEntity[]> {
-
-    
     return this.taskRepository.getAll(userId);
   }
 

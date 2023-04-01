@@ -1,16 +1,22 @@
 import { injectable } from 'inversify'
 
 import { AppDataSource } from '@src/configs/database';
-import { DeleteResult, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { ITaskRepository } from './interfaces/taskInterface';
 import { TaskEntity } from '@src/entities/TaskEntity';
+import BusinessError, { ErrorCodes } from '@src/utils/businessError';
 
 @injectable()
 export class TaskRepository implements ITaskRepository {
   private taskRepository: Repository<TaskEntity> = AppDataSource.getRepository(TaskEntity)
   
-  async create(task: TaskEntity): Promise<TaskEntity> {
-    return this.taskRepository.save(task);
+  async create(task: TaskEntity, userId: string): Promise<TaskEntity> {
+      const payload: TaskEntity = { 
+        ...task,
+        account: { id: userId }
+      }
+
+      return this.taskRepository.save(payload);
   }
 
   async delete(id: string): Promise<void> {
@@ -26,10 +32,11 @@ export class TaskRepository implements ITaskRepository {
   }
 
   async getById(id: string): Promise<TaskEntity> {
-    return this.taskRepository.findOne({where: {id }})
+
+    return await this.taskRepository.findOneBy({id})
   }
 
-  getAll(userId: string): Promise<TaskEntity[]> {
+  async getAll(userId: string): Promise<TaskEntity[]> {
     return this.taskRepository.findBy({ account: { id: userId}})
   }
 

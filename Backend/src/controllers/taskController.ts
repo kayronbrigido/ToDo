@@ -22,23 +22,28 @@ export class TaskController extends BaseHttpController implements interfaces.Con
 
   @httpGet("/id", auth)
   private getTaskById(req: Request): Promise<TaskEntity>{
+
     return this.taskService.getById(req.query.id as string);
   }
 
   @httpGet("/", auth)
   private getAllTask(req: Request): Promise<TaskEntity[]>{
   
-    return this.taskService.getAll("");
+    return this.taskService.getAll(req.session.user.userId);
   }
   
   @httpPut("/", auth)
   private updateTask(req: Request): Promise<TaskEntity>{
-    return this.taskService.update(req.body as TaskEntity);
+    const userId = req.session.user.userId
+
+    return this.taskService.update(req.body as TaskEntity, userId);
   }
 
   @httpPost("/", auth)
   private createTask(req: Request): Promise<TaskEntity>{
-    return this.taskService.create(req.body as TaskEntity)
+    const userId = req.session.user.userId
+
+    return this.taskService.create(req.body as TaskEntity, userId)
   }
 
 }
