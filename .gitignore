@@ -5,3 +5,11 @@ Backend/node_modules
 Backend/package-lock.json
 Backend/yarn.lock
 Backend/.vscode
+
+
+# Mobile Ignore
+
+Mobile/node_modules
+Mobile/package-lock.json
+Mobile/yarn.lock
+Mobile/.vscode
