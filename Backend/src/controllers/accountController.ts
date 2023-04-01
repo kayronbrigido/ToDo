@@ -18,6 +18,11 @@ export class AccountController extends BaseHttpController implements interfaces.
 
   }
 
+  @httpPost("/login")
+  private login(req: Request) {
+    return this.accountService.getAccount(req.body)
+  }
+
   @httpPost("/")
   private createAccount(req: Request) {
     return this.accountService.createAccount(req.body)

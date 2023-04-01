@@ -15,6 +15,10 @@ export class AccountEntity1680302417290 implements MigrationInterface {
                         default: 'uuid_generate_v4'
                     },
                     {
+                        name: 'username',
+                        type: 'varchar'
+                    },
+                    {
                         name: 'firstName',
                         type: 'varchar'
                     },

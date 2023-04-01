@@ -1,8 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ObjectType } from "typeorm"
 import BaseEntity from "./BaseEntity"
+import { TaskEntity } from "./TaskEntity"
 
 @Entity('account')
 export class AccountEntity extends BaseEntity{
+
+    @Column({unique: true})
+    public username?: string
 
     @Column()
     public firstName?: string
@@ -13,4 +17,8 @@ export class AccountEntity extends BaseEntity{
     @Column()
     public password?: string
 
+    @OneToMany((): ObjectType<TaskEntity> => TaskEntity, (task: TaskEntity) => task.id)
+    public task?: TaskEntity[]
 }
+
+

@@ -10,24 +10,35 @@ import helmet from 'helmet';
 
 import { IAccountService } from './services/interfaces/accountService.interface';
 import { TYPES } from './models/TYPES';
-import { AccountService } from './services/accounService';
+import { AccountService } from './services/accountService';
 
 import { AccountRepository } from './repositories/accountRepository';
 
 import { AppDataSource } from './configs/database';
 import { IAccountRepository } from './repositories/interfaces/accountInterface';
+import BusinessError from './utils/businessError';
+import UnauthorizedError from './utils/unauthorizedError';
 
 const httpStatus = require('http-status');
 
 const container: Container = new Container();
 
-const handleError = (err, req, res) => {
-
-}
+const handleError:
+  (err: BusinessError | UnauthorizedError, req: Request, res: Response) => void =
+  (err: BusinessError | UnauthorizedError, req: Request, res: Response): void => {
+    if (err instanceof BusinessError && err.isBusinessError) {
+      res.status(httpStatus.BAD_REQUEST).json({
+        error: err.code as string,
+        options: err.options
+      })
+    } else if (err instanceof UnauthorizedError && err.isUnauthorized) {
+      res.status(httpStatus.UNAUTHORIZED);
+    }
+  }
 
 export class Server {
 
-  constructor(){
+  constructor() {
     this.initializeDataSource();
     this.configDependecies();
     this.createServer();
@@ -59,7 +70,7 @@ export class Server {
       })
 
       app.use((err: any, req: Request, res: Response, _next: NextFunction): void => {
-        return handleError(err, req ,res)
+        return handleError(err, req, res)
       })
 
     })
@@ -68,7 +79,7 @@ export class Server {
     app.listen(2525, () => console.log(`App running on http:localhost:2525`))
   }
 
-  async initializeDataSource(){
+  async initializeDataSource() {
     await AppDataSource.initialize();
   }
 }
