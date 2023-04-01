@@ -37,7 +37,7 @@ const handleError:
         options: err.options
       })
     } else if (err instanceof UnauthorizedError && err.isUnauthorized) {
-      res.status(httpStatus.UNAUTHORIZED);
+      res.status(httpStatus.UNAUTHORIZED).json;
     }
   }
 

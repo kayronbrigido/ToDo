@@ -1,5 +1,6 @@
 import { JWT_KEY } from "@src/configs/constants";
 import { IUser } from "@src/models";
+import handleError from "@src/utils/handleError";
 import UnauthorizedError from "@src/utils/unauthorizedError";
 import { Request, Response, NextFunction } from "express";
 import * as jwt from 'jsonwebtoken';
@@ -28,8 +29,9 @@ async function auth(
 
     return next();
   } catch(e) {
-    console.log(e)
-  }
+    return handleError(new UnauthorizedError(), req, res)
   }
 
-  export default auth
+  }
+
+  export default auth;
