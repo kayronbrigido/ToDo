@@ -1,4 +1,4 @@
 export enum TaskStatus {
   DONE = 1,
-  PENDING = 2
+  PENDING = 0
 }

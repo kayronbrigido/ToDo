@@ -2,14 +2,13 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import MainNavigation from './MainNavigation';
-
-import { useColorScheme } from 'react-native';
+import { navigationRef } from '@services/navigationService';
 
 const AppContent = () => {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <MainNavigation />
       </NavigationContainer>
     </SafeAreaProvider>

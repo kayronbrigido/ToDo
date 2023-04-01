@@ -2,9 +2,11 @@ import { useRef, useState } from "react";
 import { Text, View } from "react-native"
 import { handleFocus } from "@services/index";
 
-import Style from './Login.style';
+import * as S from './Login.style';
 import AdvancedButton from "@components/molecules/AdvancedButton/AdvancedButton";
 import AdvancedTextInput from "@components/molecules/AdvancedTextInput/AdvancedTextInput";
+import { useNavigation } from "@react-navigation/native";
+import navigationService from "@services/navigationService";
 
 
 
@@ -25,8 +27,13 @@ export const Login = () => {
     }
   }
 
+  const handleSignup = () => {
+
+    navigationService.navigate('Signup')
+  }
+
   return (
-    <View style={Style.container}>
+    <S.Container>
       <Text>Login</Text>
       <AdvancedTextInput
         ref={usernameRef}
@@ -44,8 +51,11 @@ export const Login = () => {
       />
       <AdvancedButton 
         text="Entrar" onSubmit={handleLogin} />
+      
+      <AdvancedButton 
+        text="Cadastrar" onSubmit={handleSignup} />
         
-    </View>
+    </S.Container>
   )
 }
 
