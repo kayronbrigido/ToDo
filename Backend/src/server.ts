@@ -18,6 +18,11 @@ import { AppDataSource } from './configs/database';
 import { IAccountRepository } from './repositories/interfaces/accountInterface';
 import BusinessError from './utils/businessError';
 import UnauthorizedError from './utils/unauthorizedError';
+import { TaskService } from './services/taskService';
+import { ITaskRepository } from './repositories/interfaces/taskInterface';
+import { TaskRepository } from './repositories/taskRepository';
+import { ITaskService } from './services/interfaces/taskService.interface';
+
 
 const httpStatus = require('http-status');
 
@@ -49,6 +54,10 @@ export class Server {
     container.bind<IAccountService>(TYPES.AccountService).to(AccountService)
 
     container.bind<IAccountRepository>(TYPES.AccountRepository).to(AccountRepository)
+
+    container.bind<ITaskService>(TYPES.TaskService).to(TaskService)
+
+    container.bind<ITaskRepository>(TYPES.TaskRepository).to(TaskRepository)
   }
 
   createServer() {

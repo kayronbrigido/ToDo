@@ -15,4 +15,5 @@ export default class BusinessError extends CustomError {
 export const ErrorCodes = {
   USER_ALREADY_EXISTS: "USER_ALREADY_EXISTS",
   INVALID_CREDENTIALS: "INVALID_CREDENTIALS",
+  INVALID_ID: "INVALID_ID",
 }
