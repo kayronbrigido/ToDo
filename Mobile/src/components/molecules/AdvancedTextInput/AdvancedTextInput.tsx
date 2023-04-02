@@ -12,6 +12,7 @@ interface IProps {
   onSubmitEditing?: any
   marginVertical?: number
   marginHorizontal?: number
+  secret?: boolean
 }
 
 const AdvancedTextInput = React.forwardRef((props: IProps, ref: React.Ref<TextInput>) => {
@@ -31,6 +32,7 @@ const AdvancedTextInput = React.forwardRef((props: IProps, ref: React.Ref<TextIn
         onChangeText={props.onChange}
         placeholder={props.placeholder}
         onSubmitEditing={props.onSubmitEditing}
+        secureTextEntry={props.secret}
       />
     </View>
   )

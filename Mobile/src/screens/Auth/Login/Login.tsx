@@ -7,6 +7,7 @@ import AdvancedButton from "@components/molecules/AdvancedButton/AdvancedButton"
 import AdvancedTextInput from "@components/molecules/AdvancedTextInput/AdvancedTextInput";
 import { useNavigation } from "@react-navigation/native";
 import navigationService from "@services/navigationService";
+import { translator } from "@services/translator";
 
 
 
@@ -38,22 +39,22 @@ export const Login = () => {
       <AdvancedTextInput
         ref={usernameRef}
         text={form.username}
-        placeholder="username"
+        placeholder={translator('GENERAL.USERNAME')}
         onChange={(e: string) => setForm({ ...form, username: e })}
         onSubmitEditing={() => handleFocus(passwordRef)}
       />
       <AdvancedTextInput
         ref={passwordRef}
         text={form.password}
-        placeholder="Password"
+        placeholder={translator('GENERAL.PASSWORD')}
         onChange={(e: string) => setForm({ ...form, password: e })}
         onSubmitEditing={() => handleFocus(usernameRef)}
       />
       <AdvancedButton 
-        text="Entrar" onSubmit={handleLogin} />
+        text={translator('GENERAL.LOGIN')} onSubmit={handleLogin} />
       
       <AdvancedButton 
-        text="Cadastrar" onSubmit={handleSignup} />
+        text={translator('GENERAL.SIGNUP')} onSubmit={handleSignup} />
         
     </S.Container>
   )
