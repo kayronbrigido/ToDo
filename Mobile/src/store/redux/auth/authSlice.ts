@@ -2,17 +2,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IAuthReducer } from './type';
 
 const initialState: IAuthReducer = {
-  isLogged: false
+  isLogged: false,
+  token: null
 }
 
 const auth = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login: (state) => {
+    login: (state, action) => {
 
       return {
         ...state,
+        token: action.payload,
         isLogged: true,
       }
     },
@@ -20,6 +22,7 @@ const auth = createSlice({
 
       return {
         ...state,
+        token: null,
         isLogged: false,
       }
     },

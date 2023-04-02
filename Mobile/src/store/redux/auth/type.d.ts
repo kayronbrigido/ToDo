@@ -1,5 +1,6 @@
 
 
 export interface IAuthReducer {
-  isLogged: boolean
+  isLogged: boolean,
+  token: string | null
 }

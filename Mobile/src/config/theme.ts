@@ -2,11 +2,12 @@ import { Appearance } from "react-native"
 
 export const LightTheme = {
   background: '#FFFFFF',
-  inputPrimaryBackground: '#b0b0b0',
+  inputPrimaryBackground: '#00000015',
   inputLabelColor: '#000000',
-  inputLabelPrimaryBackground: '#b0b0b0',
+  inputLabelPrimaryBackground: '#00000015',
   primaryButtonBackground: '#3232ff',
   primaryButtonTextColor: '#FFFFFF',
+  taskCardBackgroundColor: '#00000015'
 }
 
 export const DarkTheme = {
@@ -16,6 +17,7 @@ export const DarkTheme = {
   inputLabelPrimaryBackground: '#000000',
   primaryButtonBackground: '#3232ff',
   primaryButtonTextColor: '#FFFFFF',
+  taskCardBackgroundColor: '#00000080'
 }
 
 export default Appearance.getColorScheme() === "dark" ? DarkTheme : LightTheme

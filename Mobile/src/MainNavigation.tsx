@@ -1,12 +1,16 @@
 
+import { useAppSelector } from "./hooks/useRedux";
 import AuthNavigator from "./screens/Auth/authStack";
+import ContentNavigator from "./screens/Content/contentStack";
 
 
 export const MainNavigation = () => {
-
-  if(true) {
-    return <AuthNavigator />
+  const { auth: { isLogged } } = useAppSelector()
+  if(isLogged) {
+    return <ContentNavigator />
   }
+
+  return <AuthNavigator />
 
 
 }

@@ -31,13 +31,20 @@ export class TaskController extends BaseHttpController implements interfaces.Con
   
     return this.taskService.getAll(req.session.user.userId);
   }
-  
+
+  @httpPost("/delete", auth)
+  private deleteTask(req: Request): Promise<void>{
+    return this.taskService.delete(req.body.id as string);
+  }
+
   @httpPut("/", auth)
   private updateTask(req: Request): Promise<TaskEntity>{
     const userId = req.session.user.userId
 
     return this.taskService.update(req.body as TaskEntity, userId);
   }
+
+  
 
   @httpPost("/", auth)
   private createTask(req: Request): Promise<TaskEntity>{

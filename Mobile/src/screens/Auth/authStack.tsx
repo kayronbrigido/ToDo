@@ -12,6 +12,9 @@ const AuthNavigator: React.FC = () => {
   return (
     <AuthStack.Navigator
     initialRouteName='Login'
+    screenOptions={{
+      headerShown: false
+    }}
     >
       <AuthStack.Screen
         name='Login'

@@ -5,9 +5,10 @@ import { handleFocus } from "@services/index";
 import * as S from './Login.style';
 import AdvancedButton from "@components/molecules/AdvancedButton/AdvancedButton";
 import AdvancedTextInput from "@components/molecules/AdvancedTextInput/AdvancedTextInput";
-import { useNavigation } from "@react-navigation/native";
 import navigationService from "@services/navigationService";
 import { translator } from "@services/translator";
+import { handleActionLogin } from "@src/store/redux/account/accountActions";
+import { useAppDispatch } from "@src/hooks/useRedux";
 
 
 
@@ -15,7 +16,7 @@ export const Login = () => {
   const [form, setForm] = useState({ username: '', password: '' })
   const usernameRef = useRef();
   const passwordRef = useRef();
-
+  const dispatch = useAppDispatch()
 
   const handleLogin = () => {
 
@@ -26,6 +27,14 @@ export const Login = () => {
     if(!form.password) {
       return handleFocus(passwordRef)
     }
+
+    dispatch(handleActionLogin(form, err => {
+      if(err) {
+        console.error(err)
+      } else {
+       
+      }
+    }))
   }
 
   const handleSignup = () => {
