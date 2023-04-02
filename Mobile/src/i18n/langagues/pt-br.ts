@@ -16,11 +16,16 @@ export const messages = {
         DELETE: 'Apagar',
         UPDATE: 'Atualizar',
         MARK_DONE: 'Marcar como concluída',
-        MARK_UNDONE: 'Marcar como não concluída'
+        MARK_UNDONE: 'Marcar como não concluída',
+        EDIT: 'Editar',
+        FILTER_BY: 'Filtrar por'
+      },
+      ERRORS:{
+        INVALID_CREDENTIALS: 'Credenciais inválida'
       },
       HOME_TAB: {
         TASK: 'Tarefa',
-        ADD: 'Adiciona',
+        ADD: 'Adicionar',
       },
       SCREEN: {
         ADD_TASK: {

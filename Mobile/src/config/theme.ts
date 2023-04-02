@@ -7,17 +7,25 @@ export const LightTheme = {
   inputLabelPrimaryBackground: '#00000015',
   primaryButtonBackground: '#3232ff',
   primaryButtonTextColor: '#FFFFFF',
-  taskCardBackgroundColor: '#00000015'
+  taskCardBackgroundColor: '#00000015',
+  doneTextColor: '#28ad4b',
+  pendingTextColor: '#f2020e',
+  modalBoxColor: '#c9c9c9',
+  iconFill: '#000'
 }
 
 export const DarkTheme = {
-  background: '#000000',
-  inputPrimaryBackground: '#00000080',
+  background: '#0d0d1d',
+  inputPrimaryBackground: '#00000045',
   inputLabelColor: '#000000',
   inputLabelPrimaryBackground: '#000000',
   primaryButtonBackground: '#3232ff',
   primaryButtonTextColor: '#FFFFFF',
-  taskCardBackgroundColor: '#00000080'
+  taskCardBackgroundColor: '#00000080',
+  doneTextColor: '#28ad4b',
+  pendingTextColor: '#f2020e',
+  modalBoxColor: '#1F1F1F',
+  iconFill: '#FFF'
 }
 
 export default Appearance.getColorScheme() === "dark" ? DarkTheme : LightTheme

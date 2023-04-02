@@ -7,6 +7,7 @@ import { Keyboard } from "react-native";
 import { handleActionCreateTask } from "@src/store/redux/task/taskActions";
 import { ICreateTask } from "@src/models";
 import { useAppDispatch } from "@src/hooks/useRedux";
+import navigationService from '@services/navigationService';
 
 export const AddTask = () => {
   const [form, setForm] = useState<ICreateTask>({
@@ -15,29 +16,7 @@ export const AddTask = () => {
     status: 0
   });
 
-  const [showButton, setShowButton] = useState(true);
   const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
-      () => {
-        setShowButton(false);
-      }
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      () => {
-        setShowButton(true);
-      }
-    );
-
-    return () => {
-      keyboardDidHideListener.remove();
-      keyboardDidShowListener.remove();
-    };
-  }, []);
-
 
   const handleSubmit = () => {
 
@@ -45,6 +24,13 @@ export const AddTask = () => {
     dispatch(handleActionCreateTask(form, err => {
       if (err) {
         console.error(err)
+      } else {
+        setForm({
+          title: '',
+          description: '',
+          status: 0
+        })
+        navigationService.back()
       }
     }))
   }

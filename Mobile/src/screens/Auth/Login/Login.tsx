@@ -9,6 +9,7 @@ import navigationService from "@services/navigationService";
 import { translator } from "@services/translator";
 import { handleActionLogin } from "@src/store/redux/account/accountActions";
 import { useAppDispatch } from "@src/hooks/useRedux";
+import { MessageError } from "@services/toasty";
 
 
 
@@ -29,10 +30,8 @@ export const Login = () => {
     }
 
     dispatch(handleActionLogin(form, err => {
-      if(err) {
-        console.error(err)
-      } else {
-       
+      if(err && err.message) {
+        MessageError(err.message)
       }
     }))
   }

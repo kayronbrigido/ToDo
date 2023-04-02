@@ -13,8 +13,9 @@ const ContentNavigator: React.FC = () => {
     <ContentStack.Navigator
     initialRouteName='HomeStack'
     screenOptions={{
-      headerShown: false
+      headerShown: false,
     }}
+
     >
       <ContentStack.Screen
         name='HomeStack'

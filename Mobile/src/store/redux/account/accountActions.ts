@@ -35,7 +35,7 @@ export const handleActionLogin = (
     callback(null)
   } catch (e) {
     callback(e)
-    console.error(e)
+    console.log(e)
   }
 
 }

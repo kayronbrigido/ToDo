@@ -4,6 +4,7 @@ import PlusIcon from '@assets/icons/ic_plus.svg';
 import { AddTask } from './AddTask/AddTask';
 import { Home } from './Home/Home';
 import { translator } from '@services/translator';
+import theme from '@config/theme';
 
 const HomeTab = createBottomTabNavigator();
 
@@ -13,11 +14,16 @@ const HomeStack = () => {
     screenOptions={{
       headerShown: false
     }}
+    
     >
       <HomeTab.Screen name="Home" component={Home}
         options={{
-          tabBarIcon: () => { return <OrderIcon />; },
-          tabBarLabel: translator('HOME_TAB.TASK')
+          tabBarIcon: () => { return <OrderIcon fill={theme.iconFill}/>; },
+          tabBarLabel: translator('HOME_TAB.TASK'),
+          tabBarLabelStyle: {
+            fontWeight: 'bold',
+            fontSize: 14
+          }
         }}
 
       />
@@ -25,8 +31,12 @@ const HomeStack = () => {
         name="AddTask"
         component={AddTask}
         options={{
-          tabBarIcon: () => { return <PlusIcon />; },
-          tabBarLabel: translator('HOME_TAB.ADD')
+          tabBarIcon: () => { return <PlusIcon fill={theme.iconFill} />; },
+          tabBarLabel: translator('HOME_TAB.ADD'),
+          tabBarLabelStyle: {
+            fontWeight: 'bold',
+            fontSize: 14
+          }
         }}
       />
     </HomeTab.Navigator>
