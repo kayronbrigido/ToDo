@@ -13,6 +13,7 @@ The collection of Postman environment variables are attached in the root folder,
 
 **The application is not configured for production only for development**
 
+**in the Mobile/src/config/server.ts folder you must change the BACKEND_URL variable to the one you use, like http://localhost:2525 127.0.0.1:2525 etc.**
 
 ## Instalation and Running:
 #### Backend
