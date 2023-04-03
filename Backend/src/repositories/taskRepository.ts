@@ -4,7 +4,6 @@ import { AppDataSource } from '@src/configs/database';
 import { Repository } from 'typeorm';
 import { ITaskRepository } from './interfaces/taskInterface';
 import { TaskEntity } from '@src/entities/TaskEntity';
-import BusinessError, { ErrorCodes } from '@src/utils/businessError';
 
 @injectable()
 export class TaskRepository implements ITaskRepository {

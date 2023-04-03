@@ -93,20 +93,37 @@ export const Home = () => {
           </S.ModalBox>
         </S.ModalContainer>
       </S.Modal>
-
-      <S.List
-        data={tasks?.length > 0 ? tasks : allTask}
-        renderItem={({ item }: IItem) =>
-          <TaskCard
-            id={item.id}
-            title={item.title}
-            description={item.description}
-            status={item.status}
-            onPress={(task: ITask) => handleSubmit(task.id)}
-          />
-        }
-        keyExtractor={(item: ITask) => item.id}
-      />
+      {allTask?.length < 1 ?
+        <S.BoxCentered>
+          <S.Touch onPress={() => navigationService.navigate('AddTask')}>
+            <Text
+              fontSize={18}
+              fontWeight='bold'
+              text="Você não possui tarefas"
+              textAlign="center"
+            />
+            <Text
+              fontSize={14}
+              text="Clique aqui aqui para adicionar um tarefa"
+              textAlign="center"
+            />
+          </S.Touch>
+        </S.BoxCentered>
+        :
+        <S.List
+        showsVerticalScrollIndicator={false}
+          data={tasks?.length > 0 ? tasks : allTask}
+          renderItem={({ item }: IItem) =>
+            <TaskCard
+              id={item.id}
+              title={item.title}
+              description={item.description}
+              status={item.status}
+              onPress={(task: ITask) => handleSubmit(task.id)}
+            />
+          }
+          keyExtractor={(item: ITask) => item.id}
+        />}
     </S.Container>
   )
 }

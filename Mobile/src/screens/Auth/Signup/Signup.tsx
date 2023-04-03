@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { handleActionCreateAccount } from "@src/store/redux/account/accountActions";
 import { Keyboard } from "react-native";
 import { useAppDispatch } from "@src/hooks/useRedux";
+import { MessageError } from "@services/toasty";
 
 
 export const Signup = () => {
@@ -46,32 +47,37 @@ export const Signup = () => {
   const handleSignup = async () => {
 
     if (!form.username) {
-      return handleFocus(usernameRef)
+      handleFocus(usernameRef)
+      return MessageError('USERNAME_EMPTY')
     }
 
     if (!form.firstName) {
-      return handleFocus(firstNameRef)
+      handleFocus(firstNameRef)
+      return MessageError('FIRSTNAME_EMPTY')
     }
 
     if (!form.lastName) {
-      return handleFocus(lastNameRef)
+      handleFocus(lastNameRef)
+      return MessageError('LASTNAME_EMPTY')
     }
 
     if (!form.password) {
-      return handleFocus(passwordRef)
+      handleFocus(passwordRef)
+      return MessageError('PASSWORD_EMPTY')
     }
 
     if (!confirmPass) {
-      return handleFocus(confirmPass)
+      handleFocus(confirmPass)
+      return MessageError('PASSWORD_COMFIRM_EMPTY')
     }
 
     if (confirmPass !== form.password) {
-      return handleFocus(confirmPass)
+      return MessageError('PASSWORD_NOT_MATCH')
     }
 
     dispatch(handleActionCreateAccount(form, err => {
-      if(err) {
-        console.error(err)
+      if(err && err.message) {
+        return MessageError(err.message)
       }
     }))
 

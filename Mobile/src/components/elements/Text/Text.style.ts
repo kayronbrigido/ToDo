@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 interface IProps {
   textColor?: string
+  textAlign?: string
   fontSize?: number
   fontWeight?: number | string
   marginTop?: number
@@ -14,6 +15,8 @@ interface IProps {
 export const Text = styled.Text`
  ${(props: IProps) => 
   props?.textColor ? {color : props.textColor} : ''};
+  text-align: ${(props: IProps) => 
+  props?.textAlign ? props.textAlign : 'justify'};
   fontSize: ${(props: IProps) => 
   props?.fontSize ? props.fontSize + 'px' : '14px'};
   font-weight: ${(props: IProps) => 

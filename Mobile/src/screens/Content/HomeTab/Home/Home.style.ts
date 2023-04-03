@@ -1,5 +1,5 @@
 import theme from "@config/theme";
-import { widthScale } from "@services/index";
+import { heightScale, widthScale } from "@services/index";
 import styled from "styled-components";
 
 export const Container = styled.View`
@@ -11,6 +11,7 @@ export const List = styled.FlatList`
 `
 
 export const Touch = styled.TouchableOpacity`
+  margin-vertical: ${heightScale(3) + 'px'} 
 `
 
 export const Modal = styled.Modal`
@@ -38,3 +39,10 @@ export const RowSpace = styled.View`
   justify-content: space-between;
   flex-direction: row
 `
+
+export const BoxCentered = styled.View`
+  flex: 1
+  justify-content: center;
+  align-content: center;
+`
+

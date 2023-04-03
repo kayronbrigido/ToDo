@@ -4,6 +4,7 @@ import * as S from './Text.style'
 interface IProps {
   text: string,
   textColor?: string
+  textAlign?: string
   fontSize?: number
   fontWeight?: number | string
   marginTop?: number
@@ -17,6 +18,7 @@ const Text = (props: IProps) => {
     <S.Text
       fontSize={props.fontSize}
       textColor={props.textColor}
+      textAlign={props.textAlign}
       fontWeight={props.fontWeight}
       marginTop={props.marginTop}
       marginBottom={props.marginBottom}
